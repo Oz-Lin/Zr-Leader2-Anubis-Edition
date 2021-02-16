@@ -57,9 +57,13 @@ public void OnPluginStart()
 	AddCommandListener(HookPlayerChat, "say");
 
 	RegConsoleCmd("sm_leader", Leader);
+	RegConsoleCmd("sm_le", Leader);
 	RegConsoleCmd("sm_currentleader", CurrentLeader);
+	RegConsoleCmd("sm_cl", CurrentLeader);
 	RegConsoleCmd("sm_voteleader", Command_VoteLeader, "Usage: sm_voteleader <player>");
+	RegConsoleCmd("sm_vl", Command_VoteLeader, "Usage: sm_vl <player>");
 	RegAdminCmd("sm_removeleader", RemoveTheLeader, ADMFLAG_GENERIC);
+	RegAdminCmd("sm_rl", RemoveTheLeader, ADMFLAG_GENERIC);
 
 	g_cVDefendVMT = CreateConVar("sm_leader_defend_vmt", "materials/sg/sgdefend.vmt", "The defend here .vmt file");
 	g_cVDefendVTF = CreateConVar("sm_leader_defend_vtf", "materials/sg/sgdefend.vtf", "The defend here .vtf file");

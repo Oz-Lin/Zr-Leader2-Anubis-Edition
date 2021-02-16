@@ -37,3 +37,10 @@ place defend markers, toggle a rainbow beacon, custom chat, custom radio command
 * sm_currentleader - Shows the current leader.
 * sm_voteleader - Votes for the specified player to be leader. Required votes is current player count / 10.
 * sm_removeleader (ADMFLAG_GENERIC) - Removes the current leader.
+
+# Add Commands
+
+* sm_le - Access the leader menu OR Set a player to be leader (ADMFLAG_GENERIC)
+* sm_cl - Shows the current leader.
+* sm_vl - Votes for the specified player to be leader. Required votes is current player count / 10.
+* sm_rl (ADMFLAG_GENERIC) - Removes the current leader.
