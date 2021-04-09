@@ -2,12 +2,18 @@
 {
 	"Leader Menu Title"
 	{
-		"en"			"Leader Menu"
+		"#format"		"{1:s},{2:s},{3:s}"
+		"en"			"Leader Menu\nSprite: {1}\nMarker: {2}\nBeacon: {3}"
 	}
 
 	"Leader Menu Vote Player"
 	{
-		"en"			"Leader Menu Vote Player"
+		"en"			"Menu Vote Leader"
+	}
+
+	"Menu Vote Remove Leader"
+	{
+		"en"			"Menu Vote Remove Leader"
 	}
 
 	"Resign from Leader"
@@ -17,7 +23,7 @@
 
 	"Sprite Menu"
 	{
-		"en"			"Sprite Menu:"
+		"en"			"Sprite Menu"
 	}
 
 	"Defend"
@@ -35,34 +41,25 @@
 		"en"			"None"
 	}
 
-	"Yes"
-	{
-		"en"			"Yes"
-	}
-
-	"No"
-	{
-		"en"			"No"
-	}
-
 	"Marker Menu"
 	{
-		"en"			"Marker Menu:"
+		"en"			"Marker Menu"
 	}
 
 	"Toggle Beacon"
 	{
-		"en"			"Toggle Beacon:"
+		"en"			"Toggle Beacon"
 	}
 
 	"Leader Menu Title Sprite"
 	{
-		"en"			"Leader Menu Title Sprite"
+		"#format"		"{1:s},{2:s},{3:s}"
+		"en"			"Leader Menu Sprite\nSprite: {1}\nMarker: {2}\nBeacon: {3}"
 	}
 
 	"No Sprite"
 	{
-		"en"			"Disable:"
+		"en"			"Remove Sprite"
 	}
 
 	"Defend Here"
@@ -77,17 +74,8 @@
 
 	"Leader Menu Title Marker"
 	{
-		"en"			"Leader Menu Title Marker"
-	}
-
-	"Activated"
-	{
-		"en"			"Activated"
-	}
-
-	"Disabled"
-	{
-		"en"			"Disabled"
+		"#format"		"{1:s},{2:s},{3:s}"
+		"en"			"Leader Menu Marker\nSprite: {1}\nMarker: {2}\nBeacon: {3}"
 	}
 
 	"Remove Marker"
@@ -97,17 +85,7 @@
 
 	"Defend Marker"
 	{
-		"en"			"Defend Marker:"
-	}
-
-	"Defend Marker1"
-	{
-		"en"			"Defend Marker-1:"
-	}
-
-	"Defend Marker2"
-	{
-		"en"			"Defend Marker-2:"
+		"en"			"Defend Marker"
 	}
 
 	"Players Menu"
@@ -130,6 +108,11 @@
 	"No current leader"
 	{
 		"en"			" {red}[{green}SM{red}]{default} There is no current leader!"
+	}
+
+	"This Player is not the current leader"
+	{
+		"en"			" {red}[{green}SM{red}]{default} This Player is not the current leader!"
 	}
 
 	"Leader has been removed!"
@@ -184,14 +167,10 @@
 		"en"			" {red}[{green}SM{red}]{default} All marks removed."
 	}
 
-	"Defend Here marker placed1"
+	"Defend Here marker placed"
 	{
-		"en"			" {red}[{green}SM{red}]{default} 'Defend Here' marker placed - {purple}1{default}."
-	}
-
-	"Defend Here marker placed2"
-	{
-		"en"			" {red}[{green}SM{red}]{default} 'Defend Here' marker placed - {purple}2{default}."
+		"#format"		"{1:i}"
+		"en"			" {red}[{green}SM{red}]{default} 'Defend Here' marker placed - {purple}{1}{default}."
 	}
 
 	"The leader has disconnected"
@@ -235,7 +214,7 @@
 		"en"			" {red}[{green}SM{red}]{default} You have to vote for a human!"
 	}
 
-	"You are not a human"
+	"You are not a human only humans vote"
 	{
 		"en"			" {red}[{green}SM{red}]{default} You are not a human, only humans vote!"
 	}
@@ -246,9 +225,25 @@
 		"en"			" {red}[{green}SM{red}] {purple}{1}{default} has voted for {purple}{2}{default} to be the leader ({purple}{3}{default}/{purple}{4}{default} votes)"
 	}
 
+	"Has voted for Remove"
+	{
+		"#format"		"{1:N},{2:N},{3:i},{4:i}"
+		"en"			" {red}[{green}SM{red}] {purple}{1}{default} has voted for {purple}{2}{default} to stop being a leader ({purple}{3}{default}/{purple}{4}{default} votes)"
+	}
+
 	"Has been voted to be the new leader"
 	{
 		"#format"		"{1:N}"
 		"en"			" {red}[{green}SM{red}] {purple}{1}{default} has been voted to be the new leader!"
+	}
+
+	"You are not a human"
+	{
+		"en"			" {red}[{green}SM{red}]{default} You are not a human!"
+	}
+
+	"Voting to remove leader is disabled"
+	{
+		"en"			" {red}[{green}SM{red}]{default} Voting to remove leader is disabled."
 	}
 }
