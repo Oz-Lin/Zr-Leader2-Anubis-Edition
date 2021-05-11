@@ -2,8 +2,8 @@
 {
 	"Leader Menu Title"
 	{
-		"#format"		"{1:s},{2:s},{3:s}"
-		"en"			"Leader Menu\nSprite: {1}\nMarker: {2}\nBeacon: {3}"
+		"#format"		"{1:s},{2:s},{3:s},{4:s}"
+		"en"			"Leader Menu\n \nSprite: {1}\nMarker: {2}\nBeacon: {3}\nMuteAll: {4}\n "
 	}
 
 	"Leader Menu Vote Player"
@@ -51,10 +51,15 @@
 		"en"			"Toggle Beacon"
 	}
 
+	"Toggle Mute"
+	{
+		"en"			"Toggle Mute"
+	}
+
 	"Leader Menu Title Sprite"
 	{
-		"#format"		"{1:s},{2:s},{3:s}"
-		"en"			"Leader Menu Sprite\nSprite: {1}\nMarker: {2}\nBeacon: {3}"
+		"#format"		"{1:s},{2:s},{3:s},{4:s}"
+		"en"			"Leader Menu Sprite\n \nSprite: {1}\nMarker: {2}\nBeacon: {3}\nMuteAll: {4}\n "
 	}
 
 	"No Sprite"
@@ -74,8 +79,8 @@
 
 	"Leader Menu Title Marker"
 	{
-		"#format"		"{1:s},{2:s},{3:s}"
-		"en"			"Leader Menu Marker\nSprite: {1}\nMarker: {2}\nBeacon: {3}"
+		"#format"		"{1:s},{2:s},{3:s},{4:s}"
+		"en"			"Leader Menu Marker\n \nSprite: {1}\nMarker: {2}\nBeacon: {3}\nMuteAll: {4}\n "
 	}
 
 	"Remove Marker"
@@ -92,6 +97,16 @@
 	{
 		"#format"		"{1:i},{2:i}"
 		"en"			"Votes {1}/{2}"
+	}
+
+	"Mute All"
+	{
+		"en"			" {red}[{green}SM{red}]{default} The leader mutated all players!"
+	}
+
+	"Remove Mute All"
+	{
+		"en"			" {red}[{green}SM{red}]{default} All players are no longer mutated!"
 	}
 
 	"Leader has been removed"

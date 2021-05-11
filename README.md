@@ -7,8 +7,8 @@
 * Test & Compile, SouceMod 1.10.0-6492
 * Sorry for my English.
 
-* Author AntiTeal, Anubis Edition
-* Version = 3.2, Anubis edition
+* Author Anubis.
+* Version = 3.2
 
 ### Decription:Zr-Leader2-Anubis-Edition
 
@@ -25,6 +25,7 @@ place defend markers, toggle a rainbow beacon, and maybe more in the future.
 * It is now possible to vote to remove the current leader.
 * Possibility to remain leader until the map is changed.
 * Possibility of placing several markers.
+* The leader can mute too many players for a set time
 
 ### Server ConVars
 
@@ -49,11 +50,16 @@ place defend markers, toggle a rainbow beacon, and maybe more in the future.
 * sm_cl - Shows the current leader.
 * sm_voteleader - Votes for the specified player to be leader. Required votes is current player count / 10.
 * sm_vl - Votes for the specified player to be leader. Required votes is current player count / 10.
+* sm_lmute - Leader mute command.
 
 ##New
 
 * sm_voteremoveleader - Votes to remove the leader. The votes needed are the current player count / 10.
 * sm_vrl - Votes to remove the leader. The votes needed are the current player count / 10.
+
+###Thanks.
+
+* AntiTeal - Leader2
 
 #Admin Commands
 * sm_removeleader - Removes the current leader.

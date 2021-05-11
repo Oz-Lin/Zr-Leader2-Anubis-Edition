@@ -1,10 +1,10 @@
-/**************************************************************************
- *                                                                        *
- *                Colored Chat Functions for CS:GO                        *
- *        Author: exvel, Editor: Popoklopsi, Powerlord, Zipcore, Bara     *
- *                           Version: 2.0.1                               *
- *                                                                        *
- **************************************************************************/
+/*****************************************************************************
+ *                                                                           *
+ *                Colored Chat Functions for CS:GO                           *
+ * Author: exvel, Editor: Popoklopsi, Powerlord, Zipcore, Bara, DarkerZ[RUS] *
+ *                           Version: 2.0.1fix                               *
+ *                                                                           *
+ *****************************************************************************/
 
 #if defined _csgocolors_included
  #endinput
@@ -17,63 +17,71 @@
 #define SERVER_INDEX 0
 #define NO_INDEX -1
 #define NO_PLAYER -2
-#define MAX_COLORS 18
+#define MAX_COLORS 24
 
 enum CColors
 {
- 	Color_Default = 0,
- 	Color_White,
+	Color_Default = 0,
 	Color_Darkred,
+	Color_Purple,
 	Color_Green,
-	Color_LightYellow,
-	Color_LightBlue,
-	Color_Olive,
+	Color_Lightgreen,
 	Color_Lime,
 	Color_Red,
-	Color_Purple,
 	Color_Grey,
-	Color_Yellow,
-	Color_Silver,
+	Color_Olive,
+	Color_A,
+	Color_Lightblue,
 	Color_Blue,
-	Color_DarkBlue,
-	Color_BlueGrey,
+	Color_D,
+	Color_Pink,
+	Color_Darkrange,
+	Color_Orange,
+	Color_White,
+	Color_Yellow,
 	Color_Magenta,
-	Color_LightRed
+	Color_Silver,
+	Color_Bluegrey,
+	Color_Lightred,
+	Color_Cyan,
+	Color_Gray
 }
 
 /* CColors' properties */
 char CTag[][] = {
 	"{default}", 
-	"{white}", 
 	"{darkred}", 
+	"{purple}", 
 	"{green}", 
-	"{lightyellow}", 
-	"{lightblue}", 
-	"{olive}", 
+	"{lightgreen}", 
 	"{lime}", 
 	"{red}", 
-	"{purple}", 
 	"{grey}", 
-	"{yellow}", 
-	"{silver}", 
+	"{olive}", 
+	"{a}", 
+	"{lightblue}", 
 	"{blue}", 
-	"{darkblue}", 
-	"{bluegrey}", 
+	"{d}", 
+	"{pink}", 
+	"{darkorange}", 
+	"{orange}", 
+	"{white}", 
+	"{yellow}", 
 	"{magenta}", 
-	"{lightred}"
+	"{silver}",
+	"{bluegrey}",
+	"{lightred}",
+	"{cyan}",
+	"{gray}"
 };
-
 char CTagCode[][] = {
 	"\x01", 
-	"\x01", 
 	"\x02", 
+	"\x03", 
 	"\x04", 
-	"\x03", 
-	"\x03", 
 	"\x05", 
 	"\x06", 
 	"\x07", 
-	"\x03", 
 	"\x08", 
 	"\x09", 
 	"\x0A", 
@@ -81,34 +89,73 @@ char CTagCode[][] = {
 	"\x0C", 
 	"\x0D", 
 	"\x0E", 
-	"\x0F"
+	"\x0F", 
+	"\x10",
+	"\x01",
+	"\x09",
+	"\x0E",
+	"\x0A",
+	"\x0D",
+	"\x0F",
+	"\x03",
+	"\x08"
 };
-
 bool CTagReqSayText2[] = {
 	false, 
 	false, 
 	false, 
 	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
+	false, 
 	true, 
-	true, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
-	false, 
 	false
 };
 
 bool CEventIsHooked = false;
 bool CSkipList[MAXPLAYERS+1] = {false,...};
 
-int CProfile_TeamIndex[MAX_COLORS] = {NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, 2, 3, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX, NO_INDEX};
+int CProfile_TeamIndex[MAX_COLORS] = {
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	NO_INDEX, 
+	3, 
+	NO_INDEX
+};
 bool CProfile_SayText2 = true;
 
 static Handle sm_show_activity = null;
@@ -330,7 +377,7 @@ stock void CReplaceColor(CColors color, CColors newColor)
 {
 	if (!CEventIsHooked)
 	{
-		CSetupProfile();
+		//CSetupProfile();
 		
 		CEventIsHooked = true;
 	}
@@ -773,7 +820,7 @@ stock int CShowActivity2(int client, const char[] tag, const char[] format, any 
 		VFormat(szBuffer, sizeof(szBuffer), format, 4);
 		
 		CRemoveTags(szBuffer, sizeof(szBuffer));
-		PrintToServer("%s%s\n", tag, szBuffer);
+		PrintToServer("%s%s\n", "[SM]", szBuffer);
 	}
 	
 	if (!value)
