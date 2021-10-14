@@ -43,7 +43,7 @@
 #pragma newdecls required
 
 #define PLUGIN_NAME           "Leader"
-#define PLUGIN_AUTHOR         "Anubis"
+#define PLUGIN_AUTHOR         "Anubis, modified by Oz_Lin"
 #define PLUGIN_DESCRIPTION    "Allows for a human to be a leader, and give them special functions with it."
 #define PLUGIN_VERSION        "3.2"
 #define PLUGIN_URL            "https://github.com/Stewart-Anubis"
@@ -59,6 +59,8 @@ ConVar g_cVDefendVTF = null;
 ConVar g_cVDefendVMT = null;
 ConVar g_cVFollowVTF = null;
 ConVar g_cVFollowVMT = null;
+ConVar g_cVSpawnVTF = null;
+ConVar g_cVSpawnVMT = null;
 ConVar g_cMaxMarker = null;
 ConVar g_cRdeReLeader = null;
 ConVar g_cVAllowVoting = null;
@@ -73,6 +75,8 @@ char g_sDefendVMT[PLATFORM_MAX_PATH];
 char g_sDefendVTF[PLATFORM_MAX_PATH];
 char g_sFollowVMT[PLATFORM_MAX_PATH];
 char g_sFollowVTF[PLATFORM_MAX_PATH];
+char g_sSpawnVMT[PLATFORM_MAX_PATH];
+char g_sSpawnVTF[PLATFORM_MAX_PATH];
 char g_sClientNames[MAXPLAYERS+1][MAX_NAME_LENGTH];
 char g_sLeaderTag[LENGTH_MED_TEXT];
 char g_sValue_mp_maxmoney[10];
@@ -142,6 +146,8 @@ public void OnPluginStart()
 	g_cVDefendVTF = CreateConVar("sm_leader_defend_vtf", "materials/sg/sgdefend.vtf", "The defend here .vtf file");
 	g_cVFollowVMT = CreateConVar("sm_leader_follow_vmt", "materials/sg/sgfollow.vmt", "The follow me .vmt file");
 	g_cVFollowVTF = CreateConVar("sm_leader_follow_vtf", "materials/sg/sgfollow.vtf", "The follow me .vtf file");
+	g_cVSpawnVMT = CreateConVar("sm_leader_spawn_vmt", "materials/sg/sgspawn.vmt", "The zombie spawn .vmt file");
+	g_cVSpawnVTF = CreateConVar("sm_leader_spawn_vtf", "materials/sg/sgspawn.vtf", "The zombie spawn .vtf file");
 	g_cVAllowVoting = CreateConVar("sm_leader_allow_votes", "1", "Determines whether players can vote for leaders.");
 	g_cVAllowRLVoting = CreateConVar("sm_leader_remove_leader_votes", "1", "Determines whether players can vote for remove leaders.");
 	g_cAdminLeader = CreateConVar("sm_leader_admin_leader", "1", "Determines whether Admin can access menu leader, without voting.");
@@ -153,6 +159,8 @@ public void OnPluginStart()
 	g_cVDefendVTF.AddChangeHook(ConVarChange);
 	g_cVFollowVMT.AddChangeHook(ConVarChange);
 	g_cVFollowVTF.AddChangeHook(ConVarChange);
+	g_cVSpawnVMT.AddChangeHook(ConVarChange);
+	g_cVSpawnVTF.AddChangeHook(ConVarChange);
 	g_cVAllowVoting.AddChangeHook(ConVarChange);
 	g_cVAllowRLVoting.AddChangeHook(ConVarChange);
 	g_cAdminLeader.AddChangeHook(ConVarChange);
@@ -166,16 +174,22 @@ public void OnPluginStart()
 	g_cVDefendVMT.GetString(g_sDefendVMT, sizeof(g_sDefendVMT));
 	g_cVFollowVTF.GetString(g_sFollowVTF, sizeof(g_sFollowVTF));
 	g_cVFollowVMT.GetString(g_sFollowVMT, sizeof(g_sFollowVMT));
+	g_cVSpawnVTF.GetString(g_sSpawnVTF, sizeof(g_sSpawnVTF));
+	g_cVSpawnVMT.GetString(g_sSpawnVMT, sizeof(g_sSpawnVMT));
 
 	AddFileToDownloadsTable(g_sDefendVTF);
 	AddFileToDownloadsTable(g_sDefendVMT);
 	AddFileToDownloadsTable(g_sFollowVTF);
 	AddFileToDownloadsTable(g_sFollowVMT);
+	AddFileToDownloadsTable(g_sSpawnVTF);
+	AddFileToDownloadsTable(g_sSpawnVMT);
 
 	PrecacheGeneric(g_sDefendVTF, true);
 	PrecacheGeneric(g_sDefendVMT, true);
 	PrecacheGeneric(g_sFollowVTF, true);
 	PrecacheGeneric(g_sFollowVMT, true);
+	PrecacheGeneric(g_sSpawnVTF, true);
+	PrecacheGeneric(g_sSpawnVMT, true);
 
 	g_bAllowVoting = g_cVAllowVoting.BoolValue;
 	g_bAllowRLVoting = g_cVAllowRLVoting.BoolValue;
@@ -198,16 +212,22 @@ public void ConVarChange(ConVar CVar, const char[] oldVal, const char[] newVal)
 	g_cVDefendVMT.GetString(g_sDefendVMT, sizeof(g_sDefendVMT));
 	g_cVFollowVTF.GetString(g_sFollowVTF, sizeof(g_sFollowVTF));
 	g_cVFollowVMT.GetString(g_sFollowVMT, sizeof(g_sFollowVMT));
+	g_cVSpawnVTF.GetString(g_sSpawnVTF, sizeof(g_sSpawnVTF));
+	g_cVSpawnVMT.GetString(g_sSpawnVMT, sizeof(g_sSpawnVMT));
 
 	AddFileToDownloadsTable(g_sDefendVTF);
 	AddFileToDownloadsTable(g_sDefendVMT);
 	AddFileToDownloadsTable(g_sFollowVTF);
 	AddFileToDownloadsTable(g_sFollowVMT);
+	AddFileToDownloadsTable(g_sSpawnVTF);
+	AddFileToDownloadsTable(g_sSpawnVMT);
 
 	PrecacheGeneric(g_sDefendVTF, true);
 	PrecacheGeneric(g_sDefendVMT, true);
 	PrecacheGeneric(g_sFollowVTF, true);
 	PrecacheGeneric(g_sFollowVMT, true);
+	PrecacheGeneric(g_sSpawnVTF, true);
+	PrecacheGeneric(g_sSpawnVMT, true);
 
 	g_bAllowVoting = g_cVAllowVoting.BoolValue;
 	g_bAllowRLVoting = g_cVAllowRLVoting.BoolValue;
@@ -223,11 +243,15 @@ public void OnMapStart()
 	AddFileToDownloadsTable(g_sDefendVMT);
 	AddFileToDownloadsTable(g_sFollowVTF);
 	AddFileToDownloadsTable(g_sFollowVMT);
+	AddFileToDownloadsTable(g_sSpawnVTF);
+	AddFileToDownloadsTable(g_sSpawnVMT);
 
 	PrecacheGeneric(g_sDefendVTF, true);
 	PrecacheGeneric(g_sDefendVMT, true);
 	PrecacheGeneric(g_sFollowVTF, true);
 	PrecacheGeneric(g_sFollowVMT, true);
+	PrecacheGeneric(g_sSpawnVTF, true);
+	PrecacheGeneric(g_sSpawnVMT, true);
 
 	Handle gameConfig = LoadGameConfigFile("funcommands.games");
 	if (gameConfig == null)
@@ -648,15 +672,17 @@ void LeaderMenu(int client, bool b_sprite = false, bool b_marker = false)
 	{
 		char s_RemoveMarker[LENGTH_MED_TEXT];
 		char s_DefendMarker[LENGTH_MED_TEXT];
+		char s_SpawnMarker[LENGTH_MED_TEXT];
 
 		Format(s_Title, sizeof(s_Title), "%t", "Leader Menu Title Marker", s_TSprite, s_TMarker, s_TBeacon, s_TBMute);
 		Format(s_DefendMarker, sizeof(s_DefendMarker), "%t", "Defend Marker");
+		Format(s_SpawnMarker, sizeof(s_SpawnMarker), "%t", "Spawn Marker");
 		Format(s_RemoveMarker, sizeof(s_RemoveMarker), "%t", "Remove Marker");
 
 		m_LeaderMenu.SetTitle(s_Title);
 		m_LeaderMenu.AddItem("m_defendmarker", s_DefendMarker);
+		m_LeaderMenu.AddItem("m_spawnmarker", s_SpawnMarker);
 		m_LeaderMenu.AddItem("m_removemarker", s_RemoveMarker);
-		m_LeaderMenu.AddItem("", "", ITEMDRAW_NOTEXT);
 		m_LeaderMenu.AddItem("", "", ITEMDRAW_NOTEXT);
 		m_LeaderMenu.AddItem("", "", ITEMDRAW_NOTEXT);
 		m_LeaderMenu.AddItem("", "", ITEMDRAW_NOTEXT);
@@ -791,6 +817,30 @@ public int LeaderMenu_Handler(Handle m_LeaderMenu, MenuAction action, int client
 					g_iMarkerCount++;
 					g_iMarkerEntities[g_iMarkerCount] = SpawnMarker(client, g_sDefendVMT);
 					CPrintToChat(client, "%t", "Defend Here marker placed" ,g_iMarkerCount);
+					g_bMarkerActive = true;
+					LeaderMenu(client, false, true);
+				}
+			}
+			if(StrEqual(info, "m_spawnmarker"))
+			{
+				if (g_iMarkerCount >= g_iMaxMarker)
+				{
+					g_iRemoveMarker++;
+					if (g_iRemoveMarker > g_iMaxMarker)
+					{
+						g_iRemoveMarker = 1;
+					}
+					RemoveMarker(g_iRemoveMarker);
+					g_iMarkerEntities[g_iRemoveMarker] = SpawnMarker(client, g_sSpawnVMT);
+					CPrintToChat(client, "%t", "Zombie Spawn marker placed" ,g_iRemoveMarker);
+					LeaderMenu(client, false, true);
+
+				}
+				else
+				{
+					g_iMarkerCount++;
+					g_iMarkerEntities[g_iMarkerCount] = SpawnMarker(client, g_sSpawnVMT);
+					CPrintToChat(client, "%t", "Zombie Spawn marker placed" ,g_iMarkerCount);
 					g_bMarkerActive = true;
 					LeaderMenu(client, false, true);
 				}
