@@ -1,4 +1,9 @@
-# Zr-Leader2-Anubis-Edition
+# Zr-Leader2-Anubis-Edition modified by Oz_Lin
+
+## What will Oz_Lin modify
+* Add a "Zombie Teleport" marker
+* Fix the translation.phrases.text typo
+* Modify sourcepawn code for the zombie teleport marker option.
  
 ### Improved version of zombiereloaded plugin with support for CS:GO and CS:S
 
