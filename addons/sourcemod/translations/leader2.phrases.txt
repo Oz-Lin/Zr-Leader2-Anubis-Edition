@@ -85,12 +85,17 @@
 
 	"Remove Marker"
 	{
-		"en"			"Remove All Marks"
+		"en"			"Remove All Markers"
 	}
 
 	"Defend Marker"
 	{
 		"en"			"Defend Marker"
+	}
+
+	"Spawn Marker"
+	{
+		"en"			"Spawn Marker"
 	}
 
 	"Players Menu"
@@ -101,12 +106,12 @@
 
 	"Mute All"
 	{
-		"en"			" {red}[{green}SM{red}]{default} The leader mutated all players!"
+		"en"			" {red}[{green}SM{red}]{default} The leader muted all players!"
 	}
 
 	"Remove Mute All"
 	{
-		"en"			" {red}[{green}SM{red}]{default} All players are no longer mutated!"
+		"en"			" {red}[{green}SM{red}]{default} All players are no longer muted!"
 	}
 
 	"Leader has been removed"
@@ -186,6 +191,12 @@
 	{
 		"#format"		"{1:i}"
 		"en"			" {red}[{green}SM{red}]{default} 'Defend Here' marker placed - {purple}{1}{default}."
+	}
+
+	"Zombie Spawn marker placed"
+	{
+		"#format"		"{1:i}"
+		"en"			" {red}[{green}SM{red}]{default} 'Zombie Spawn' marker placed - {purple}{1}{default}."
 	}
 
 	"The leader has disconnected"
