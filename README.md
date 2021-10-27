@@ -71,4 +71,4 @@ place defend markers, toggle a rainbow beacon, and maybe more in the future.
 * sm_rl - Removes the current leader.
 
 ![alt text](https://i.ibb.co/tD28HrW/11.jpg)
-![alt text](https://i.ibb.co/m9wmqRC/22.jpg)
+![alt text](https://media.discordapp.net/attachments/784130828380143616/898093131642310676/20211014171953_2.jpg?width=881&height=496)
