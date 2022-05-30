@@ -1,4 +1,5 @@
-# Zr-Leader2-Anubis-Edition modified by Oz_Lin
+# Zr-Leader2-Anubis-Edition modified by Oz_Lin (Abandoned)
+* Abandoned project, please use this instead: https://github.com/Oz-Lin/Zr-Leader-Ultimate
 
 ## What will Oz_Lin modify
 * Add a "Zombie Teleport" marker
